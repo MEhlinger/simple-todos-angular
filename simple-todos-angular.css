@@ -124,3 +124,8 @@ header .hide-completed {
     padding-bottom: 5px;
   }
 }
+
+.bert-alert.privacy-changed {
+  background: purple;
+  color: #fff;
+}

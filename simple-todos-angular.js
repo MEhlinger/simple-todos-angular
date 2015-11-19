@@ -19,18 +19,45 @@ if (Meteor.isClient) {
 
       $scope.addTask = function (newTask) {
         $meteor.call('addTask', newTask);
+        Bert.alert({
+          title: "New Task Added!",
+          message: '"' + newTask + '" added.',
+          style: 'growl-top-right',
+          type: 'success'
+        });
       };
 
       $scope.deleteTask = function (task) {
         $meteor.call('deleteTask', task._id);
+        Bert.alert({
+          title: "Task Deleted!",
+          message: '"' + task.text + '" deleted.',
+          type: 'danger',
+          style: 'growl-top-right'
+        });
       };
 
       $scope.setChecked = function (task) {
         $meteor.call('setChecked', task._id, !task.checked);
+        if (task.checked) {
+          Bert.alert({
+            title: "Task Completed!",
+            message: '"' + task.text + '"',
+            type: 'info',
+            style: 'growl-top-right'
+          });
+        }
       };
 
       $scope.setPrivate = function (task) {
         $meteor.call('setPrivate', task._id, !task.private);
+        Bert.alert({
+          title: "Task Privacy Changed!",
+          message: '"' + task.text + '" set to ' + (task.private ? "private" : "public") + ".",
+          type: 'privacy-changed',
+          style: 'growl-top-right',
+          icon: 'fa-warning'
+        });
       };
 
       $scope.$watch('hideCompleted', function () {
