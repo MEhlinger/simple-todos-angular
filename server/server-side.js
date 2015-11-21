@@ -1,7 +1,4 @@
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // STARTUP ONLY
-  });
+if (Meteor.isServer) { 
 
   Meteor.publish('tasks', function () {
       return Tasks.find({
