@@ -9,3 +9,4 @@ likely continue to do, as I learn my way around Meteor *and* Angular.
 * Delete method protected && delete button hidden to non-owner users
 * Added themeteorchef:bert package for alert popups
 * Restructured directories to /server, /client, /both model for source
+* Added verification emails. Verification meaningless right now.
