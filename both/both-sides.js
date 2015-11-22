@@ -39,4 +39,5 @@ Meteor.methods({
     }
     Tasks.update(taskId, {$set: {private :setToPrivate}});
   }
+  
 });
