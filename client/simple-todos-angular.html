@@ -37,7 +37,7 @@
             <button class="toggle-private"
             	ng-if="task.owner === $root.currentUser._id"
             	ng-click="setPrivate(task)">
-            	{{task.private == true ? "Private" : "Public"}}
+            	{{task.private === true ? "Private" : "Public"}}
 			</button>            	
 
 			<span class="text"><strong>{{task.username}} - </strong>{{task.text}}</span>
