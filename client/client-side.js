@@ -14,13 +14,23 @@ angular.module('simple-todos').controller('TodosListCtrl', ['$scope', '$meteor',
     });
 
     $scope.addTask = function (newTask) {
-      $meteor.call('addTask', newTask);
-      Bert.alert({
-        title: "New Task Added!",
-        message: '"' + newTask + '" added.',
-        style: 'growl-top-right',
-        type: 'success'
-      });
+      $meteor.call('addTask', newTask).then(
+        function(data) {
+          Bert.alert({
+            title: "New Task Added!",
+            message: '"' + newTask + '" added.',
+            style: 'growl-top-right',
+            type: 'success'
+          });
+        },
+        function(err) {
+          Bert.alert({
+            title: "Unauthorized Attempt",
+            message: "" + err,
+            style: 'growl-top-right',
+            type: 'danger'
+          });
+        });
     };
 
     $scope.deleteTask = function (task) {
@@ -34,15 +44,23 @@ angular.module('simple-todos').controller('TodosListCtrl', ['$scope', '$meteor',
     };
 
     $scope.setChecked = function (task) {
-      $meteor.call('setChecked', task._id, !task.checked);
-      if (task.checked) {
-        Bert.alert({
-          title: "Task Completed!",
-          message: '"' + task.text + '"',
-          type: 'info',
-          style: 'growl-top-right'
+      $meteor.call('setChecked', task._id, !task.checked).then(
+        function(data){
+          Bert.alert({
+            title: "Task Completed!",
+            message: '"' + task.text + '"',
+            type: 'info',
+            style: 'growl-top-right'
+          });
+        },
+        function(err){
+          Bert.alert({
+            title: "Unauthorized Attempt",
+            message: "" + err,
+            style: 'growl-top-right',
+            type: 'danger'
+          });
         });
-      }
     };
 
     $scope.setPrivate = function (task) {

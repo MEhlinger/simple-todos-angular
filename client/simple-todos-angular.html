@@ -31,7 +31,7 @@
     		<button class="delete" ng-if="task.owner === $root.currentUser._id" ng-click="deleteTask(task)">&times;</button>
     
 
-      		<input type="checkbox" ng-checked="task.checked"
+      		<input type="checkbox" ng-if='$root.currentUser.emails[0].verified' ng-checked="task.checked"
             	ng-click="setChecked(task)"  />
 
             <button class="toggle-private"
