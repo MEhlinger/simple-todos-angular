@@ -1,5 +1,5 @@
 Accounts.ui.config({
-  passwordSignupFields: "EMAIL_ONLY"
+  passwordSignupFields: "USERNAME_AND_EMAIL"
 });
 
 angular.module('simple-todos',['angular-meteor', 'accounts.ui']);
